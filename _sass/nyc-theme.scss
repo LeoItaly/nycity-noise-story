@@ -1,0 +1,468 @@
+// NYC-themed styles
+
+// NYC Header
+.nyc-header {
+  position: relative;
+  background-color: $nyc-blue;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  
+  .nyc-header-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('../assets/images/nyc-skyline-silhouette.svg');
+    background-repeat: repeat-x;
+    background-position: bottom center;
+    background-size: auto 40px;
+    opacity: 0.2;
+  }
+  
+  .nyc-header-content {
+    z-index: 1;
+  }
+  
+  .nyc-subway-sign {
+    display: flex;
+    align-items: center;
+    background-color: $nyc-white;
+    padding: 5px 15px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 18px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    
+    span {
+      margin: 0 5px;
+      color: $nyc-gray;
+      letter-spacing: 1px;
+    }
+    
+    .nyc-subway-line {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background-color: $nyc-orange;
+      color: $nyc-white;
+      font-weight: bold;
+      margin: 0 10px;
+    }
+  }
+}
+
+// NYC Badge
+.nyc-badge {
+  display: inline-flex;
+  align-items: center;
+  background-color: $nyc-blue;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  font-weight: bold;
+  
+  .nyc-circle {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: $nyc-yellow;
+    margin-right: 6px;
+  }
+  
+  span {
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
+}
+
+// NYC Skyline silhouette for sections
+.slide {
+  position: relative;
+  
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background-image: url('../assets/images/nyc-skyline-silhouette.svg');
+    background-repeat: repeat-x;
+    background-position: bottom center;
+    background-size: auto 80px;
+    opacity: 0.1;
+    pointer-events: none;
+    z-index: -1;
+  }
+}
+
+// NYC Footer
+.nyc-footer {
+  background-color: $nyc-gray;
+  color: white;
+  padding: 40px 0;
+  margin-top: 60px;
+  position: relative;
+  
+  .nyc-skyline {
+    position: absolute;
+    top: -30px;
+    left: 0;
+    right: 0;
+    height: 30px;
+    background-image: url('../assets/images/nyc-skyline-silhouette.svg');
+    background-repeat: repeat-x;
+    background-position: bottom center;
+    background-size: auto 30px;
+  }
+  
+  .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    padding: 0 20px;
+  }
+  
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    
+    .nyc-badge {
+      margin-bottom: 0;
+      margin-right: 10px;
+    }
+    
+    h3 {
+      margin: 0;
+      color: white;
+      font-size: 18px;
+    }
+  }
+  
+  .borough-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    
+    .borough {
+      padding: 10px;
+      border-radius: 4px;
+      font-weight: bold;
+      
+      &.manhattan { background-color: rgba($nyc-blue, 0.8); }
+      &.brooklyn { background-color: rgba($nyc-orange, 0.8); }
+      &.queens { background-color: rgba($nyc-yellow, 0.8); color: black; }
+      &.bronx { background-color: rgba($nyc-green, 0.8); }
+      &.staten-island { background-color: rgba(lighten($nyc-gray, 20%), 0.8); }
+    }
+  }
+  
+  .footer-noise-scale {
+    margin-top: 20px;
+    
+    .noise-level {
+      margin-bottom: 0;
+    }
+  }
+}
+
+// NYC Grid Pattern Background
+body {
+  position: relative;
+  
+  &::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      linear-gradient(rgba(255,255,255,0.97) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.97) 1px, transparent 1px);
+    background-size: 20px 20px;
+    background-color: rgba(250, 250, 250, 0.8);
+    z-index: -2;
+    pointer-events: none;
+  }
+}
+
+// NYC Location Tags
+.nyc-location-tags {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+// NYC Subway-inspired Elements
+.slide-title {
+  display: inline-block;
+  padding: 5px 15px;
+  margin-left: -15px;
+  font-weight: bold;
+  position: relative;
+  border-radius: 3px;
+  
+  &::before {
+    content: "";
+    position: absolute;
+    left: -5px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: $nyc-white;
+    border: 3px solid $nyc-blue;
+    z-index: -1;
+  }
+}
+
+// Subway Route Indicators
+.data-badge {
+  display: inline-block;
+  width: 26px;
+  height: 26px;
+  line-height: 26px;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 50%;
+  margin-right: 8px;
+  font-size: 14px;
+  
+  &.blue {
+    background-color: $nyc-blue;
+    color: white;
+  }
+  
+  &.orange {
+    background-color: $nyc-orange;
+    color: white;
+  }
+  
+  &.yellow {
+    background-color: $nyc-yellow;
+    color: black;
+  }
+}
+
+// NYC Street Sign Style
+.key-finding {
+  border-left: 5px solid $nyc-blue;
+  padding-left: 15px;
+  position: relative;
+  
+  h3 {
+    color: $nyc-blue;
+    font-weight: bold;
+  }
+  
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -5px;
+    width: 5px;
+    height: 15px;
+    background-color: $nyc-green;
+  }
+}
+
+// Noise Level Indicator (inspired by NYC noise code)
+.noise-level {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  
+  .noise-indicator {
+    width: 20px;
+    height: 40px;
+    background: linear-gradient(to top, green, yellow, orange, red);
+    margin-right: 10px;
+    position: relative;
+    
+    &::after {
+      content: "";
+      position: absolute;
+      left: 20px;
+      height: 2px;
+      width: 10px;
+      background-color: black;
+    }
+    
+    .noise-marker {
+      position: absolute;
+      left: 0;
+      width: 22px;
+      height: 4px;
+      background-color: black;
+      transform: translateY(-50%);
+    }
+  }
+}
+
+// NYC Map Pin style
+.location-tag {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 15px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  
+  &::before {
+    content: "";
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: $nyc-orange;
+    margin-right: 5px;
+    box-shadow: 0 0 0 2px rgba(0,0,0,0.1);
+  }
+  
+  &.manhattan::before { background-color: $nyc-blue; }
+  &.brooklyn::before { background-color: $nyc-orange; }
+  &.queens::before { background-color: $nyc-yellow; }
+  &.bronx::before { background-color: $nyc-green; }
+  &.staten-island::before { background-color: $nyc-gray; }
+}
+
+// NYC Neighborhood Text
+.neighborhood-label {
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 1px;
+  font-weight: bold;
+  color: $nyc-gray;
+  margin-bottom: 3px;
+}
+
+.progress-nav {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 20px;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  a {
+    display: block;
+    width: 14px;
+    height: 14px;
+    margin: 10px 0;
+    border-radius: 50%;
+    background-color: rgba($nyc-gray, 0.3);
+    position: relative;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    
+    &::before {
+      content: attr(data-title);
+      position: absolute;
+      right: 25px;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: $nyc-blue;
+      color: white;
+      padding: 4px 10px;
+      border-radius: 3px;
+      font-size: 12px;
+      white-space: nowrap;
+      opacity: 0;
+      transition: all 0.3s ease;
+      font-weight: bold;
+    }
+    
+    &::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -13px;
+      width: 2px;
+      height: 12px;
+      background-color: rgba($nyc-gray, 0.3);
+      transform: translateX(-50%);
+    }
+    
+    &:last-child::after {
+      display: none;
+    }
+    
+    &:hover, &.active {
+      background-color: $nyc-blue;
+      border-color: white;
+      
+      &::before {
+        opacity: 1;
+      }
+    }
+    
+    &:hover::before {
+      opacity: 1;
+    }
+  }
+}
+
+// Additional NYC theme styles for the index page
+.slide-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.slide {
+  padding: 60px 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+// Fix for visualizations
+.viz-container {
+  margin: 30px 0;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+// Phase controls
+.phase-indicator {
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: $nyc-blue;
+  color: white;
+  border-radius: 4px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
+  
+  &.phase-lockdown {
+    background-color: $nyc-orange;
+  }
+}
+
+// Add NYC-specific CSS variables for JS
+:root {
+  --pre-pandemic-color: #{$nyc-blue};
+  --lockdown-color: #{$nyc-orange};
+  --reopening-color: #{$nyc-yellow};
+  --primary-blue: #{$nyc-blue};
+  --secondary-blue: #{darken($nyc-blue, 10%)};
+  --light-blue: #{lighten($nyc-blue, 45%)};
+} 

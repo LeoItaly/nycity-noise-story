@@ -6,31 +6,23 @@
     <title>{{ page.title }} - {{ site.title }}</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&family=Roboto+Slab:wght@400;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/assets/css/nyc-style.css' | relative_url }}">
     <link rel="icon" type="image/png" href="{{ '/assets/images/favicon.png' | relative_url }}">
     {% seo %}
 </head>
 <body>
     <header class="site-header">
-        <div class="header-background"></div>
-        <nav class="main-nav">
-            <div class="nav-container">
-                <a href="{{ '/' | relative_url }}" class="logo">
-                    <span class="logo-icon"><i class="fas fa-volume-high"></i></span>
-                    <span class="logo-text">NYC Noise Story</span>
-                </a>
-                <input type="checkbox" id="nav-toggle" class="nav-toggle">
-                <label for="nav-toggle" class="nav-toggle-label">
-                    <span></span>
-                </label>
-                <ul class="nav-links">
-                    <li><a href="{{ '/' | relative_url }}" {% if page.url == '/' %}class="active"{% endif %}><i class="fas fa-home"></i> Home</a></li>
-                    <li><a href="{{ '/explore' | relative_url }}" {% if page.url == '/explore.html' %}class="active"{% endif %}><i class="fas fa-chart-bar"></i> Explore</a></li>
-                    <li><a href="{{ '/notebook' | relative_url }}" {% if page.url == '/notebook.html' %}class="active"{% endif %}><i class="fas fa-book"></i> Notebook</a></li>
-                    <li><a href="{{ '/about' | relative_url }}" {% if page.url == '/about.html' %}class="active"{% endif %}><i class="fas fa-info-circle"></i> About</a></li>
-                </ul>
-            </div>
-        </nav>
+        <div class="wrapper">
+            <a class="site-title" href="{{ '/' | relative_url }}">
+                <i class="fas fa-volume-high"></i> NYC Noise Story
+            </a>
+            <nav class="site-nav">
+                <a class="page-link {% if page.url == '/' %}active{% endif %}" href="{{ '/' | relative_url }}">Home</a>
+                <a class="page-link {% if page.url == '/explore.html' %}active{% endif %}" href="{{ '/explore' | relative_url }}">Explore</a>
+                <a class="page-link {% if page.url == '/notebook.html' %}active{% endif %}" href="{{ '/notebook' | relative_url }}">Notebook</a>
+                <a class="page-link {% if page.url == '/about.html' %}active{% endif %}" href="{{ '/about' | relative_url }}">About</a>
+            </nav>
+        </div>
     </header>
 
     <main class="page-content">
@@ -38,32 +30,32 @@
     </main>
 
     <footer class="site-footer">
-        <div class="footer-content">
-            <div class="footer-columns">
-                <div class="footer-column">
-                    <h3>About This Project</h3>
-                    <p>Analyzing how NYC's noise complaint patterns changed during the COVID-19 pandemic, revealing fascinating insights about urban soundscapes and neighborhood disparities.</p>
+        <div class="wrapper">
+            <div class="footer-info">
+                <div class="footer-logo">
+                    <h3>The Sounds of NYC</h3>
                 </div>
-                <div class="footer-column">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="{{ '/' | relative_url }}">Home</a></li>
-                        <li><a href="{{ '/explore' | relative_url }}">Explore</a></li>
-                        <li><a href="{{ '/notebook' | relative_url }}">Notebook</a></li>
-                        <li><a href="{{ '/about' | relative_url }}">About</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Connect</h3>
-                    <div class="social-links">
-                        <a href="https://github.com/LeoItaly/nycity-noise-story" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                    </div>
+                <p>A data-driven exploration of New York City's acoustic transformation during the COVID-19 pandemic.</p>
+                
+                <div class="social-links">
+                    <a href="https://github.com/LeoItaly/nycity-noise-story" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
                 </div>
             </div>
+            
+            <div class="footer-nav">
+                <h3>Navigation</h3>
+                <ul class="footer-nav-links">
+                    <li><a href="{{ '/' | relative_url }}">Home</a></li>
+                    <li><a href="{{ '/explore' | relative_url }}">Explore</a></li>
+                    <li><a href="{{ '/notebook' | relative_url }}">Notebook</a></li>
+                    <li><a href="{{ '/about' | relative_url }}">About</a></li>
+                </ul>
+            </div>
+            
             <div class="copyright">
-                <p>&copy; {{ site.time | date: '%Y' }} {{ site.title }} | Built with <a href="https://jekyllrb.com">Jekyll</a></p>
+                <p>&copy; {{ site.time | date: '%Y' }} NYC Noise Story | Built with <a href="https://jekyllrb.com">Jekyll</a></p>
             </div>
         </div>
     </footer>
@@ -77,10 +69,22 @@
 
     <script src="{{ '/assets/js/noise-story.js' | relative_url }}"></script>
     <script>
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            if (link.getAttribute('href') === window.location.pathname || 
-                link.getAttribute('href') === window.location.pathname + '/' ||
-                (window.location.pathname.includes(link.getAttribute('href')) && link.getAttribute('href') !== '/')) {
+        document.querySelectorAll('.site-nav .page-link').forEach(link => {
+            // First remove all active classes
+            link.classList.remove('active');
+            
+            // Get the current path and the link path for comparison
+            const currentPath = window.location.pathname;
+            const linkPath = link.getAttribute('href');
+            
+            // Handle homepage special case
+            if (linkPath === '/' && currentPath === '/') {
+                link.classList.add('active');
+            }
+            // Handle other pages
+            else if (linkPath !== '/' && currentPath.endsWith(linkPath) || 
+                    (linkPath !== '/' && currentPath.endsWith(linkPath + '.html')) ||
+                    (linkPath !== '/' && currentPath.endsWith(linkPath + '/'))) {
                 link.classList.add('active');
             }
         });

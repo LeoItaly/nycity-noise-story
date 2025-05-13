@@ -1,0 +1,1435 @@
+/* NYC-themed Styles - Merged CSS File */
+
+/* NYC Color Variables */
+:root {
+  --nyc-blue: #0039A6; /* Manhattan - blue */
+  --nyc-orange: #FF6319; /* Brooklyn - orange */
+  --nyc-green: #00933C; /* Queens - green */
+  --nyc-red: #EE352E; /* Bronx - red */
+  --nyc-purple: #A626AA; /* Staten Island - purple */
+  --nyc-yellow: #FFDC73; /* Taxi yellow */
+  --nyc-gray: #4D4D4D; /* Concrete/asphalt */
+  
+  /* Visualization Style Variables */
+  --viz-border: rgba(0, 57, 166, 0.2); /* Light blue border */
+  --viz-background: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+  --viz-hover: rgba(0, 57, 166, 0.05); /* Very light blue hover */
+  --viz-caption: rgba(77, 77, 77, 0.9); /* Dark gray for captions */
+}
+
+/* NYC-themed Header - Modern Style */
+.site-header {
+  background-color: var(--nyc-gray);
+  border-bottom: 4px solid var(--nyc-blue);
+  padding: 15px 0;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.site-header .wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.site-title {
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: white !important;
+  text-transform: uppercase;
+  text-decoration: none;
+  margin-right: 40px;
+}
+
+.site-nav {
+  display: flex;
+  justify-content: center;
+}
+
+.site-nav .page-link {
+  color: white;
+  margin: 0 15px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  position: relative;
+  padding: 5px 0;
+}
+
+.site-nav .page-link:hover {
+  color: var(--nyc-yellow);
+}
+
+.site-nav .page-link.active::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: var(--nyc-yellow);
+}
+
+/* Main Title Styling */
+.slide-title {
+  color: var(--nyc-blue) !important;
+  font-weight: bold !important;
+  border-bottom: 3px solid var(--nyc-orange);
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+/* NYC Skyline Silhouette Background */
+body::after {
+  content: "";
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background-image: url('../images/nyc-skyline-silhouette.svg');
+  background-repeat: repeat-x;
+  background-position: bottom center;
+  background-size: auto 80px;
+  opacity: 0.1;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* NYC Grid Pattern Background - Manhattan grid style */
+body {
+  position: relative;
+  background-color: #fafafa;
+  background-image: 
+    linear-gradient(rgba(200,200,200,0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200,200,200,0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main.page-content {
+  flex: 1;
+}
+
+/* NYC Borough Tags */
+.location-tag {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 15px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  padding: 3px 10px 3px 5px;
+  border-radius: 3px;
+  background-color: rgba(240, 240, 240, 0.5);
+}
+
+.location-tag::before {
+  content: "";
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.location-tag.manhattan::before { background-color: var(--nyc-blue); }
+.location-tag.brooklyn::before { background-color: var(--nyc-orange); }
+.location-tag.queens::before { background-color: var(--nyc-green); }
+.location-tag.bronx::before { background-color: var(--nyc-red); }
+.location-tag.staten-island::before { background-color: var(--nyc-purple); }
+
+/* NYC Neighborhood Labels */
+.neighborhood-label {
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  font-weight: bold;
+  color: var(--nyc-gray);
+  margin-bottom: 3px;
+}
+
+/* NYC-themed Key Findings */
+.key-finding {
+  border-left: 5px solid var(--nyc-blue);
+  padding: 15px;
+  background-color: rgba(240, 240, 240, 0.5);
+  border-radius: 0 4px 4px 0;
+  margin: 20px 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.key-finding h3 {
+  color: var(--nyc-blue);
+  font-weight: bold;
+  margin-top: 0;
+}
+
+/* Stats Row with NYC Styling */
+.stats-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin: 30px 0;
+}
+
+.stat-card {
+  flex: 1;
+  min-width: 120px;
+  background: #f9f9f9;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+}
+
+.stat-value {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--nyc-blue);
+  margin-bottom: 5px;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+/* Story Phases with NYC Colors */
+.story-phases {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.phase-card {
+  flex: 1;
+  min-width: 180px;
+  padding: 15px;
+  border-radius: 8px;
+  background: #f9f9f9;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.phase-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.phase-card.phase-pre {
+  border-top: 3px solid var(--nyc-blue);
+}
+
+.phase-card.phase-lockdown {
+  border-top: 3px solid var(--nyc-orange);
+}
+
+.phase-card.phase-reopen {
+  border-top: 3px solid var(--nyc-green);
+}
+
+.phase-icon {
+  width: 40px;
+  height: 40px;
+  background: #f5f5f5;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.phase-pre .phase-icon i {
+  color: var(--nyc-blue);
+}
+
+.phase-lockdown .phase-icon i {
+  color: var(--nyc-orange);
+}
+
+.phase-reopen .phase-icon i {
+  color: var(--nyc-green);
+}
+
+.phase-card h4 {
+  margin: 0 0 5px 0;
+  font-size: 0.9rem;
+}
+
+.phase-card p {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #666;
+}
+
+/* Override Default link colors */
+a {
+  color: var(--nyc-blue);
+}
+
+a:hover {
+  color: var(--nyc-orange);
+  text-decoration: none;
+}
+
+/* Button Styling */
+.cta-button {
+  background-color: var(--nyc-blue);
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.cta-button:hover {
+  background-color: var(--nyc-orange);
+  color: white;
+  text-decoration: none;
+}
+
+.cta-button.secondary {
+  background-color: var(--nyc-gray);
+}
+
+.cta-button.secondary:hover {
+  background-color: var(--nyc-blue);
+}
+
+.cta-button.outline {
+  background-color: transparent;
+  border: 2px solid var(--nyc-blue);
+  color: var(--nyc-blue);
+}
+
+.cta-button.outline:hover {
+  background-color: rgba(0, 57, 166, 0.1);
+  color: var(--nyc-blue);
+}
+
+/* NYC-themed section dividers */
+.slide {
+  position: relative;
+  padding: 60px 0;
+  border-bottom: 1px solid rgba(200,200,200,0.3);
+}
+
+.slide::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(to right, var(--nyc-blue), var(--nyc-orange));
+  border-radius: 2px;
+}
+
+/* NYC-themed footer - Modern Style */
+.site-footer {
+  background-color: var(--nyc-gray);
+  color: white;
+  padding: 40px 0 20px;
+  margin-top: 60px;
+  position: relative;
+  width: 100%;
+  bottom: 0;
+}
+
+.site-footer::before {
+  content: "";
+  position: absolute;
+  top: -30px;
+  left: 0;
+  right: 0;
+  height: 30px;
+  background-image: url('../images/nyc-skyline-silhouette.svg');
+  background-repeat: repeat-x;
+  background-position: bottom center;
+  background-size: auto 30px;
+}
+
+.site-footer .wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-info {
+  flex: 1;
+  min-width: 300px;
+  margin-right: 20px;
+}
+
+.footer-logo h3 {
+  margin-top: 0;
+  color: white;
+  font-weight: bold;
+}
+
+.footer-nav {
+  flex: 1;
+  min-width: 200px;
+}
+
+.footer-nav h3 {
+  color: white;
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.footer-nav-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-nav-links li {
+  margin-bottom: 10px;
+}
+
+.footer-nav-links a {
+  color: white;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.footer-nav-links a:hover {
+  color: var(--nyc-yellow);
+}
+
+/* Data point */
+.data-point {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(0, 57, 166, 0.05);
+  padding: 8px 15px;
+  border-radius: 4px;
+  margin-top: 10px;
+  font-size: 0.9rem;
+  border-left: 3px solid var(--nyc-blue);
+}
+
+.data-value {
+  font-weight: bold;
+  color: var(--nyc-blue);
+  margin-right: 5px;
+}
+
+.data-badge {
+  display: none; /* Hide the badge style data points */
+}
+
+/* Enhanced Visualization Containers */
+.viz-container {
+  background: var(--viz-background);
+  border: 1px solid var(--viz-border);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  margin: 25px 0;
+  padding: 5px;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+/* Filter animation */
+.viz-container.filtered {
+  animation: pulse-highlight 0.5s ease;
+}
+
+@keyframes pulse-highlight {
+  0% { box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); }
+  50% { box-shadow: 0 4px 25px rgba(0, 57, 166, 0.4); }
+  100% { box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); }
+}
+
+/* Expand button for visualizations */
+.viz-expand-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(255, 255, 255, 0.8);
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 5;
+  opacity: 0.7;
+  transition: opacity 0.2s, transform 0.2s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.viz-expand-button:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.viz-expand-button i {
+  color: var(--nyc-blue);
+  font-size: 14px;
+}
+
+/* Modal styles for expanded visualizations */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(3px);
+}
+
+.modal-content {
+  background: white;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 1200px;
+  height: 90%;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+}
+
+.modal-content iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.close-modal {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 24px;
+  color: var(--nyc-gray);
+  cursor: pointer;
+  z-index: 10;
+  background: white;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.close-modal:hover {
+  color: var(--nyc-red);
+}
+
+.viz-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.viz-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(to right, 
+    var(--nyc-blue), 
+    var(--nyc-orange), 
+    var(--nyc-green), 
+    var(--nyc-red), 
+    var(--nyc-purple));
+  border-radius: 4px 4px 0 0;
+}
+
+.viz-container iframe {
+  border-radius: 4px;
+  transition: filter 0.3s ease;
+}
+
+.viz-caption {
+  background: var(--viz-caption);
+  color: white;
+  padding: 12px 15px;
+  font-size: 0.9rem;
+  border-radius: 0 0 7px 7px;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.viz-caption i {
+  margin-right: 5px;
+  color: var(--nyc-yellow);
+}
+
+/* Interactive Elements */
+.interactive-control {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 10px 15px;
+  margin: 10px 0;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.interactive-control label {
+  font-weight: 600;
+  color: var(--nyc-gray);
+  margin-right: 8px;
+}
+
+.interactive-control select,
+.interactive-control input {
+  padding: 6px 12px;
+  border: 1px solid var(--viz-border);
+  border-radius: 4px;
+  background: white;
+  color: var(--nyc-gray);
+  font-size: 0.9rem;
+}
+
+.interactive-control select:focus,
+.interactive-control input:focus {
+  outline: none;
+  border-color: var(--nyc-blue);
+  box-shadow: 0 0 0 2px rgba(0, 57, 166, 0.2);
+}
+
+.interactive-control button {
+  background: var(--nyc-blue);
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.interactive-control button:hover {
+  background: #002d85;
+}
+
+/* Tooltip Styles */
+.viz-tooltip {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid var(--viz-border);
+  border-radius: 4px;
+  padding: 8px 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  font-size: 0.85rem;
+  max-width: 250px;
+  z-index: 1000;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.viz-tooltip.active {
+  opacity: 1;
+}
+
+.viz-tooltip-title {
+  font-weight: 600;
+  color: var(--nyc-blue);
+  margin-bottom: 4px;
+  border-bottom: 1px solid var(--viz-border);
+  padding-bottom: 4px;
+}
+
+.viz-tooltip-value {
+  color: var(--nyc-gray);
+}
+
+/* Borough-specific highlight classes */
+.manhattan-highlight {
+  color: var(--nyc-blue);
+  font-weight: 600;
+}
+
+.brooklyn-highlight {
+  color: var(--nyc-orange);
+  font-weight: 600;
+}
+
+.queens-highlight {
+  color: var(--nyc-green);
+  font-weight: 600;
+}
+
+.bronx-highlight {
+  color: var(--nyc-red);
+  font-weight: 600;
+}
+
+.staten-island-highlight {
+  color: var(--nyc-purple);
+  font-weight: 600;
+}
+
+/* Interactive legend */
+.viz-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 10px 0;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 4px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.legend-item:hover {
+  background: var(--viz-hover);
+}
+
+.legend-color {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 6px;
+}
+
+.legend-label {
+  font-size: 0.85rem;
+  color: var(--nyc-gray);
+}
+
+.legend-item.inactive {
+  opacity: 0.5;
+}
+
+.legend-item.manhattan .legend-color { background-color: var(--nyc-blue); }
+.legend-item.brooklyn .legend-color { background-color: var(--nyc-orange); }
+.legend-item.queens .legend-color { background-color: var(--nyc-green); }
+.legend-item.bronx .legend-color { background-color: var(--nyc-red); }
+.legend-item.staten-island .legend-color { background-color: var(--nyc-purple); }
+
+/* Phase indicators for sections */
+.phase-indicator {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.phase-indicator.phase-lockdown {
+  background-color: var(--nyc-orange);
+}
+
+/* Key findings grid */
+.findings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin: 30px 0;
+}
+
+/* Conclusion */
+.conclusion {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  padding-left: 15px;
+  margin: 30px 0;
+  color: #555;
+}
+
+/* Action buttons */
+.action-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+/* Note box for calls to action */
+.note-box {
+  display: flex;
+  align-items: center;
+  background-color: rgba(0, 57, 166, 0.1);
+  border-radius: 6px;
+  padding: 15px;
+  margin: 20px 0;
+}
+
+.note-box i {
+  color: var(--nyc-blue);
+  font-size: 1.2rem;
+  margin-right: 15px;
+}
+
+.note-box span {
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.note-box a {
+  color: var(--nyc-blue);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.note-box a:hover {
+  text-decoration: underline;
+}
+
+/* Scroll indicator */
+.scroll-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.scroll-indicator i {
+  margin-top: 5px;
+  animation: bounce 2s infinite;
+  color: var(--nyc-blue);
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .story-phases {
+    flex-direction: column;
+  }
+  
+  .findings-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .action-buttons {
+    flex-direction: column;
+  }
+  
+  .cta-button {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* Narrative elements */
+.narrative-hook {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: #333;
+  font-weight: 400;
+  margin-bottom: 25px;
+}
+
+.narrative-signpost {
+  background: #f7f7f7;
+  padding: 12px 15px;
+  margin: 20px 0;
+  border-radius: 4px;
+}
+
+.narrative-signpost p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.narrative-phase {
+  display: inline-block;
+  background: rgba(0, 57, 166, 0.1);
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  color: var(--nyc-blue);
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.narrative-assertion {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 25px;
+}
+
+.narrative-transition {
+  font-size: 1.1rem;
+  color: #444;
+  margin: 25px 0 15px;
+  font-style: italic;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  padding: 15px 0;
+  margin: 30px 0 20px;
+  text-align: center;
+}
+
+/* More narrative elements */
+.viz-annotation {
+  background: #f0f8ff;
+  padding: 12px 15px;
+  margin: 5px 0 25px;
+  border-radius: 4px;
+  font-size: 0.95rem;
+}
+
+.viz-annotation p {
+  margin: 0;
+}
+
+/* Exploration elements */
+.exploration-phase {
+  display: inline-block;
+  background: var(--nyc-yellow);
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  color: #333;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.exploration-intro {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+/* Other elements */
+.narrative-synthesis {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 25px;
+}
+
+.narrative-landmark {
+  display: flex;
+  align-items: flex-start;
+  background: #f5f5f5;
+  border-radius: 8px;
+  padding: 15px;
+  margin: 30px 0;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.landmark-icon {
+  font-size: 2rem;
+  color: var(--nyc-blue);
+  margin-right: 15px;
+  flex-shrink: 0;
+}
+
+.landmark-content h3 {
+  margin-top: 0;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.landmark-content p {
+  margin-bottom: 0;
+  color: #555;
+}
+
+.insight-summary {
+  background: #f7f7f7;
+  border-radius: 8px;
+  padding: 15px 20px;
+  margin: 25px 0;
+}
+
+.insight-summary h3 {
+  display: flex;
+  align-items: center;
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.insight-summary h3 i {
+  color: var(--nyc-orange);
+  margin-right: 10px;
+}
+
+.insight-summary ul {
+  margin-bottom: 0;
+  padding-left: 25px;
+}
+
+.insight-summary li {
+  margin-bottom: 5px;
+}
+
+/* Override container styles for better layout */
+.slide-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.slide {
+  padding: 60px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Interactive notes styling */
+.interactive-note {
+  background-color: rgba(0, 57, 166, 0.05);
+  padding: 15px;
+  border-radius: 4px;
+  margin: 20px 0;
+  border-left: 4px solid var(--nyc-blue);
+}
+
+.interactive-note i {
+  color: var(--nyc-blue);
+  margin-right: 8px;
+}
+
+/* NYC Backdrop for Landing */
+.nyc-backdrop {
+  position: relative;
+  overflow: hidden;
+}
+
+.nyc-backdrop::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.95)), url('../images/nyc-skyline-silhouette.svg');
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  opacity: 0.15;
+  z-index: -1;
+}
+
+/* About Page Styling */
+.about-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.about-header {
+  margin-bottom: 40px;
+  border-bottom: 1px solid #eaeaea;
+  padding-bottom: 20px;
+}
+
+.about-content {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.about-section {
+  margin: 40px 0;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.about-section h2 {
+  margin-top: 0;
+  color: var(--nyc-blue);
+}
+
+.contact-links {
+  margin-top: 20px;
+  display: flex;
+  gap: 15px;
+}
+
+.contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background-color: var(--nyc-blue);
+  border-radius: 4px;
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.contact-link:hover {
+  background-color: var(--nyc-orange);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+/* Notebook Page Styling */
+.notebook-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.notebook-header {
+  margin-bottom: 40px;
+  border-bottom: 1px solid #eaeaea;
+  padding-bottom: 20px;
+}
+
+.notebook-header h1 {
+  margin-bottom: 10px;
+  color: var(--nyc-blue);
+}
+
+.notebook-content {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.notebook-section {
+  margin: 40px 0;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.notebook-section h2 {
+  margin-top: 0;
+  color: var(--nyc-blue);
+}
+
+.notebook-cta {
+  margin: 40px 0;
+  text-align: center;
+  padding: 30px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.notebook-cta p {
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+/* Explore Page Styling */
+.explore-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.explore-header {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.exploration-intro {
+  font-size: 1.1rem;
+  max-width: 800px;
+  margin: 0 auto 20px;
+  line-height: 1.6;
+}
+
+.exploration-context {
+  font-size: 1.05rem;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  color: #444;
+}
+
+/* Storyline connection box */
+.storyline-connection {
+  display: flex;
+  align-items: center;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 30px auto;
+  max-width: 800px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  text-align: left;
+  border-left: 4px solid var(--nyc-blue);
+}
+
+.connection-icon {
+  font-size: 2rem;
+  color: var(--nyc-blue);
+  margin-right: 20px;
+  flex-shrink: 0;
+}
+
+.connection-text h3 {
+  margin-top: 0;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.connection-text p {
+  margin-bottom: 0;
+  font-size: 0.95rem;
+  color: #666;
+}
+
+/* Exploration guide */
+.exploration-guide {
+  background: #f0f8ff;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 30px auto;
+  max-width: 800px;
+  text-align: left;
+  border: 1px solid #e0e8ef;
+}
+
+.exploration-guide h3 {
+  display: flex;
+  align-items: center;
+  margin-top: 0;
+  color: var(--nyc-blue);
+  font-size: 1.2rem;
+}
+
+.exploration-guide h3 i {
+  margin-right: 10px;
+}
+
+.exploration-guide p {
+  margin-bottom: 15px;
+  color: #555;
+}
+
+.exploration-guide ol {
+  margin-bottom: 15px;
+  padding-left: 25px;
+}
+
+.exploration-guide li {
+  margin-bottom: 8px;
+}
+
+/* Tab styling */
+.explore-tabs {
+  display: flex;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 20px;
+}
+
+.tab-button {
+  background-color: transparent;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #555;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tab-button:hover {
+  color: var(--nyc-blue);
+}
+
+.tab-button.active {
+  color: var(--nyc-blue);
+  border-bottom: 3px solid var(--nyc-blue);
+}
+
+.tab-content {
+  padding: 20px 0;
+}
+
+.key-findings {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  margin: 30px 0;
+  border-left: 4px solid var(--nyc-blue);
+}
+
+.key-findings h3 {
+  margin-top: 0;
+  color: var(--nyc-blue);
+}
+
+.key-findings ul {
+  margin-bottom: 0;
+  padding-left: 20px;
+}
+
+.key-findings li {
+  margin-bottom: 8px;
+}
+
+.exploration-prompt {
+  font-style: italic;
+  background-color: #f5f5f5;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+/* Exploration questions */
+.exploration-questions {
+  background: #f9f9f9;
+  border-radius: 8px;
+  padding: 15px 20px;
+  margin: 20px 0;
+  border-left: 3px solid var(--nyc-orange);
+}
+
+.exploration-questions h4 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: var(--nyc-orange);
+}
+
+/* Insight landmark */
+.insight-landmark {
+  display: flex;
+  align-items: flex-start;
+  background: #f7f7f7;
+  border-radius: 8px;
+  padding: 15px;
+  margin: 25px 0;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  border-left: 4px solid var(--nyc-blue);
+}
+
+.landmark-icon {
+  font-size: 1.5rem;
+  color: var(--nyc-blue);
+  margin-right: 15px;
+  margin-top: 3px;
+}
+
+/* Exploration prompt */
+.exploration-prompt {
+  background-color: #f1f7fb;
+  padding: 15px;
+  border-radius: 8px;
+  margin: 30px 0;
+  font-style: italic;
+  border-left: 4px solid var(--nyc-blue);
+}
+
+/* Visualization captions */
+.viz-caption i {
+  color: var(--nyc-blue);
+}
+
+/* Tab styling */
+.tab-button:hover {
+  color: var(--nyc-blue);
+}
+
+.tab-button.active {
+  color: var(--nyc-blue);
+  border-bottom: 3px solid var(--nyc-blue);
+}
+
+/* Key findings */
+.key-findings {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  margin: 30px 0;
+  border-left: 4px solid var(--nyc-blue);
+}
+
+/* Social links */
+.social-links {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.social-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  color: white;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.social-links a:hover {
+  background-color: var(--nyc-orange);
+  transform: translateY(-3px);
+}
+
+/* Copyright section */
+.copyright {
+  width: 100%;
+  margin-top: 30px;
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.copyright a {
+  color: var(--nyc-yellow);
+  text-decoration: none;
+}
+
+.copyright a:hover {
+  text-decoration: none;
+  color: white;
+} 

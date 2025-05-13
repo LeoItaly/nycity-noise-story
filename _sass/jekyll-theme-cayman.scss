@@ -3,6 +3,7 @@
 @use 'normalize';
 @use 'rouge-github';
 @use 'variables';
+@use 'nyc-theme';
 
 // Import fonts - using @use with string for URL imports isn't supported yet
 // This is the only @import that's still needed

@@ -13,16 +13,12 @@
 <loc>http://localhost:4000/nycity-noise-story/notebook.html</loc>
 </url>
 <url>
-<loc>http://localhost:4000/nycity-noise-story/2010-Narrative-InfoVis.pdf</loc>
-<lastmod>2025-03-10T17:19:50+01:00</lastmod>
-</url>
-<url>
 <loc>http://localhost:4000/nycity-noise-story/assets/visualizations/bar_chart_race.html</loc>
 <lastmod>2025-05-13T12:00:32+02:00</lastmod>
 </url>
 <url>
 <loc>http://localhost:4000/nycity-noise-story/assets/visualizations/borough_category_heatmap.html</loc>
-<lastmod>2025-05-13T11:38:30+02:00</lastmod>
+<lastmod>2025-05-13T16:27:27+02:00</lastmod>
 </url>
 <url>
 <loc>http://localhost:4000/nycity-noise-story/assets/visualizations/borough_choropleth_map.html</loc>
@@ -50,7 +46,7 @@
 </url>
 <url>
 <loc>http://localhost:4000/nycity-noise-story/assets/visualizations/nyc_noise_by_borough_phase.html</loc>
-<lastmod>2025-05-13T13:49:08+02:00</lastmod>
+<lastmod>2025-05-13T18:49:12+02:00</lastmod>
 </url>
 <url>
 <loc>http://localhost:4000/nycity-noise-story/assets/visualizations/nyc_noise_timeseries.html</loc>

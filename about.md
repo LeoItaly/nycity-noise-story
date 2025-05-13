@@ -3,6 +3,9 @@ layout: default
 title: About
 ---
 
+<!-- Include NYC styling -->
+<link rel="stylesheet" href="{{ '/assets/css/nyc-style.css' | relative_url }}">
+
 <div class="about-page">
   <div class="about-header">
     <h1>About This Project</h1>
@@ -10,18 +13,19 @@ title: About
 
   <div class="about-content">
     <h2>Project Overview</h2>
-    <p>"The Quiet Before the Storm: NYC's Pandemic Noise Story" is a data visualization project that explores how New York City's noise complaints transformed during the COVID-19 pandemic. The project analyzes over 1 million 311 noise complaint records from 2019-2020 to reveal patterns in urban soundscapes and neighborhood inequalities.</p>
+    <p>"The Quiet Before the Storm: NYC's Pandemic Noise Story" is a data visualization project that explores how New York City's noise complaints transformed during the COVID-19 pandemic. The project analyzes over 1 million 311 noise complaint records from 2019-2020 to reveal a distinct three-phase pattern in urban soundscapes: Pre-Pandemic Normal, The Great Quieting, and The Noise Awakening.</p>
     
     <div class="about-section">
       <h2>Methodology</h2>
-      <p>This project uses data from NYC Open Data's 311 Service Requests dataset, focusing specifically on noise-related complaints. The analysis involves:</p>
+      <p>This project uses data from NYC Open Data's 311 Service Requests dataset, focusing specifically on noise-related complaints. The analysis follows a structured approach to uncover temporal, spatial, and categorical patterns:</p>
       
       <ul>
-        <li>Data cleaning and preprocessing of raw 311 service request data</li>
-        <li>Temporal analysis of complaint patterns before, during, and after lockdown</li>
-        <li>Spatial analysis of complaint distributions across boroughs and neighborhoods</li>
-        <li>Categorical analysis of different types of noise complaints</li>
-        <li>Interactive visualizations created with Bokeh, Folium, and other tools</li>
+        <li><strong>Data Collection and Preprocessing:</strong> We extracted and cleaned 1,036,852 noise complaints from the NYC 311 dataset spanning Jan 2019-Dec 2020. We filtered by complaint type, standardized borough names, and validated geospatial coordinates.</li>
+        <li><strong>Temporal Analysis:</strong> We examined daily, weekly, and monthly complaint patterns, creating comparative year-over-year visualizations to identify significant changes during each pandemic phase.</li>
+        <li><strong>Spatial Analysis:</strong> We mapped complaint distributions across the five boroughs and created choropleth maps to visualize geographic patterns and borough-level differences.</li>
+        <li><strong>Categorical Analysis:</strong> We analyzed changes in specific noise types (residential, commercial, construction, etc.) to understand how complaint composition shifted throughout the pandemic.</li>
+        <li><strong>Statistical Significance Testing:</strong> We applied time-series analysis and statistical tests to confirm that observed changes were significant and not due to normal seasonal variations.</li>
+        <li><strong>Interactive Visualization Development:</strong> We created 12 interactive visualizations using Bokeh, Folium, and other tools to enable exploration of the three-phase pattern from multiple perspectives.</li>
       </ul>
       
       <p>For a detailed technical explanation of the methodology, please refer to the <a href="{{ '/notebook' | relative_url }}">Technical Notebook</a>.</p>
@@ -31,7 +35,9 @@ title: About
       <h2>Project Inspiration</h2>
       <p>This project was inspired by personal observations of how urban soundscapes changed during the pandemic. As streets emptied, businesses closed, and people stayed home, cities around the world experienced unprecedented transformations in their acoustic environments.</p>
       
-      <p>NYC's comprehensive 311 complaint data offered a unique opportunity to quantify these changes and explore how they varied across different neighborhoods and time periods. The findings reveal not just changes in noise levels, but also deeper insights about urban life, community resilience, and social inequality.</p>
+      <p>NYC's comprehensive 311 complaint data offered a unique opportunity to quantify these changes and explore how they varied across different neighborhoods and time periods. The findings reveal not just changes in noise levels, but also deeper insights about how urban noise patterns shifted during each phase of the pandemic response.</p>
+      
+      <p>Our approach to this project was informed by narrative visualization principles from Segel & Heer's "Narrative Visualization: Telling Stories with Data" (2010), creating a balance between author-driven storytelling and reader-driven exploration through interactive elements.</p>
     </div>
     
     <div class="about-section">
@@ -70,57 +76,3 @@ title: About
     </div>
   </div>
 </div>
-
-<style>
-  .about-page {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 40px 20px;
-  }
-  
-  .about-header {
-    margin-bottom: 40px;
-    border-bottom: 1px solid #eaeaea;
-    padding-bottom: 20px;
-  }
-  
-  .about-content {
-    font-size: 16px;
-    line-height: 1.6;
-  }
-  
-  .about-section {
-    margin: 40px 0;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-  }
-  
-  .about-section h2 {
-    margin-top: 0;
-  }
-  
-  .contact-links {
-    margin-top: 20px;
-    display: flex;
-    gap: 15px;
-  }
-  
-  .contact-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 16px;
-    background-color: #f1f1f1;
-    border-radius: 4px;
-    text-decoration: none;
-    color: #333;
-    font-weight: 600;
-    transition: background-color 0.2s ease;
-  }
-  
-  .contact-link:hover {
-    background-color: #e5e5e5;
-    text-decoration: none;
-  }
-</style>

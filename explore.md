@@ -1,257 +1,153 @@
 ---
 layout: default
-title: Explore the Data
+title: Explore NYC Noise Data
 ---
+
+<!-- Include NYC styling -->
+<link rel="stylesheet" href="{{ '/assets/css/nyc-style.css' | relative_url }}">
 
 <div class="explore-page">
   <div class="explore-header">
-    <h1>Interactive Data Exploration</h1>
-    <p>Dive deeper into NYC's noise complaint data with these interactive visualizations. Filter, sort, and explore the data to discover your own insights about how the pandemic transformed the city's soundscape.</p>
+    <h1>Explore the Data</h1>
+    <p>Dive deeper into NYC's noise complaint patterns during the pandemic</p>
+  </div>
+
+  <div class="exploration-intro">
+    <p>This interactive exploration space allows you to investigate NYC's noise patterns during the pandemic through multiple perspectives. Use the visualizations below to discover patterns by borough, noise type, and time period.</p>
     
-    <div class="storyline-connection">
-      <div class="connection-icon"><i class="fas fa-link"></i></div>
-      <div class="connection-text">
-        <h3>Continuing from "The Quiet Before the Storm"</h3>
-        <p>These visualizations allow you to explore in greater detail the data presented in the main story. Use these tools to answer your own questions about how NYC's noise landscape changed during the pandemic.</p>
+    <div class="viz-legend">
+      <div class="legend-item manhattan" data-category="manhattan">
+        <div class="legend-color"></div>
+        <div class="legend-label">Manhattan</div>
+      </div>
+      <div class="legend-item brooklyn" data-category="brooklyn">
+        <div class="legend-color"></div>
+        <div class="legend-label">Brooklyn</div>
+      </div>
+      <div class="legend-item queens" data-category="queens">
+        <div class="legend-color"></div>
+        <div class="legend-label">Queens</div>
+      </div>
+      <div class="legend-item bronx" data-category="bronx">
+        <div class="legend-color"></div>
+        <div class="legend-label">Bronx</div>
+      </div>
+      <div class="legend-item staten-island" data-category="staten-island">
+        <div class="legend-color"></div>
+        <div class="legend-label">Staten Island</div>
       </div>
     </div>
   </div>
 
   <div class="explore-tabs">
-    <button class="tab-button active" data-tab="time">Temporal Patterns</button>
-    <button class="tab-button" data-tab="location">Spatial Analysis</button>
+    <button class="tab-button active" data-tab="tab1">Geographic Patterns</button>
+    <button class="tab-button" data-tab="tab2">Noise Types</button>
+    <button class="tab-button" data-tab="tab3">Time Trends</button>
   </div>
 
-  <div class="tab-content" id="time-content">
-    <h2>Exploring Noise Complaints Over Time</h2>
-    <p>Examine how noise complaints changed throughout 2019-2020, with special focus on the pandemic phases.</p>
-    
-    <div class="viz-container large">
-      <iframe src="{{ '/assets/visualizations/category_composition_stacked_area.html' | relative_url }}" width="100%" height="500px" frameborder="0"></iframe>
-      <div class="viz-caption">
-        <i class="fas fa-info-circle"></i> <strong>Interactive:</strong> Stacked area chart showing the changing composition of noise complaint categories over time
+  <div class="tab-content" id="tab1">
+    <div class="exploration-section">
+      <h2>Geographic Patterns of Noise</h2>
+      
+      <div class="viz-container large">
+        <iframe src="{{ '/assets/visualizations/borough_choropleth_map.html' | relative_url }}" width="100%" height="600px" frameborder="0"></iframe>
+        <div class="viz-caption">
+          <i class="fas fa-map-marked-alt"></i> <strong>Interactive Map:</strong> Explore the geographic distribution of noise complaints across NYC's five boroughs. Click on a borough to see detailed statistics.
+        </div>
       </div>
-    </div>
-    
-    <div class="key-findings">
-      <h3>Key Temporal Patterns</h3>
-      <ul>
-        <li>Overall complaints dropped by ~20% during initial lockdown (March-May 2020)</li>
-        <li>Complaints surged by ~50% during reopening (June-December 2020)</li>
-        <li>The composition of noise categories shifted dramatically during different pandemic phases</li>
-        <li>Residential noise complaints increased during lockdown while commercial noise decreased</li>
-        <li>Street/Sidewalk noise saw a significant surge during the reopening phase</li>
-      </ul>
+      
+      <div class="exploration-insight">
+        <h3><i class="fas fa-lightbulb"></i> Key Geographic Insights</h3>
+        <ul>
+          <li>The <span class="bronx-mention">Bronx</span> saw the most dramatic increase in noise complaints during reopening (+166%)</li>
+          <li><span class="manhattan-mention">Manhattan</span> experienced the biggest drop during lockdown (-32%)</li>
+          <li>All boroughs saw increases in the reopening phase, but with significantly different magnitudes</li>
+          <li>Lower-income areas like the Bronx had a more modest initial decrease but a much larger subsequent surge, pointing to socioeconomic factors</li>
+          <li>Staten Island consistently maintained the lowest complaint volume but still saw a substantial +58.9% increase during reopening</li>
+          <li>Brooklyn (+147.5%) and Queens (+138.9%) showed similar patterns in noise complaint increases during reopening</li>
+        </ul>
+      </div>
     </div>
   </div>
 
-  <div class="tab-content" id="location-content" style="display: none;">
-    <h2>Spatial Distribution of Noise Complaints</h2>
-    <p>Explore how noise complaints varied across different boroughs and neighborhoods during pandemic phases.</p>
-    
-    <div class="viz-container full-width large">
-      <iframe src="{{ '/assets/visualizations/nyc_noise_by_borough_phase.html' | relative_url }}" width="100%" height="500px" frameborder="0"></iframe>
-      <div class="viz-caption">
-        <i class="fas fa-map-marked-alt"></i> <strong>Interactive Visualization:</strong> Compare noise complaint patterns across boroughs during different pandemic phases
+  <div class="tab-content" id="tab2" style="display:none;">
+    <div class="exploration-section">
+      <h2>Noise Complaint Categories</h2>
+      
+      <div class="viz-container">
+        <iframe src="{{ '/assets/visualizations/noise_category_mix.html' | relative_url }}" width="100%" height="500px" frameborder="0"></iframe>
+        <div class="viz-caption">
+          <i class="fas fa-sliders-h"></i> <strong>Interactive:</strong> Compare noise categories by borough and year. Use the controls to switch between 2019 and 2020 data.
+        </div>
+      </div>
+      
+      <div class="exploration-insight">
+        <h3><i class="fas fa-lightbulb"></i> Key Category Insights</h3>
+        <ul>
+          <li>"Residential" noise became the dominant category across all boroughs during reopening</li>
+          <li>"Commercial" noise complaints plummeted during lockdown (-65%)</li>
+          <li>"Street/Sidewalk" noise emerged as a major category during reopening, particularly in <span class="manhattan-mention">Manhattan</span></li>
+          <li>Helicopter noise saw the largest percentage increase (+248.5%), possibly related to increased surveillance and medical transport</li>
+          <li>Park noise increased substantially (+110.1%) as residents sought outdoor recreation options</li>
+          <li>The composition of noise categories shifted dramatically: residential noise increased from 35% to 62% of all complaints during lockdown</li>
+          <li>Statistical analysis showed strong positive correlations (0.88) between street noise and residential noise, suggesting outdoor activity increases led to indoor complaint rises</li>
+        </ul>
       </div>
     </div>
-    
-    <div class="viz-container full-width large">
-      <iframe src="{{ '/assets/visualizations/borough_choropleth_map.html' | relative_url }}" width="100%" height="500px" frameborder="0"></iframe>
-      <div class="viz-caption">
-        <i class="fas fa-map-marked-alt"></i> <strong>Interactive Map:</strong> Click on boroughs to explore detailed neighborhood-level data
+  </div>
+
+  <div class="tab-content" id="tab3" style="display:none;">
+    <div class="exploration-section">
+      <h2>Temporal Patterns & Trends</h2>
+      
+      <div class="viz-container large">
+        <iframe src="{{ '/assets/visualizations/nyc_noise_by_borough_phase.html' | relative_url }}" width="100%" height="600px" frameborder="0"></iframe>
+        <div class="viz-caption">
+          <i class="fas fa-chart-line"></i> <strong>Time Series:</strong> Observe how each borough's noise patterns evolved through the pandemic phases. Hover for detailed values.
+        </div>
       </div>
-    </div>
-    
-    <div class="key-findings">
-      <h3>Key Spatial Insights</h3>
-      <ul>
-        <li>Manhattan saw the largest decrease during lockdown (-35%)</li>
-        <li>The Bronx experienced minimal reduction during lockdown (-5%)</li>
-        <li>Lower-income neighborhoods saw greater increases during reopening</li>
-        <li>Brooklyn and Queens showed similar patterns but with different magnitudes</li>
-        <li>Staten Island consistently had the lowest overall complaint volume</li>
-      </ul>
+      
+      <div class="exploration-insight">
+        <h3><i class="fas fa-lightbulb"></i> Key Temporal Insights</h3>
+        <ul>
+          <li>Weekend noise complaints showed the most dramatic increase during reopening (+124%)</li>
+          <li>Night-time noise (10pm-6am) saw a sustained rise from June 2020 onward</li>
+          <li>Seasonal patterns were disrupted by pandemic phases, overwhelming traditional trends</li>
+          <li>The overall complaint volume saw a 69.5% increase from 2019 to 2020</li>
+          <li>Pre-COVID (2019) period averaged ~663 complaints per day</li>
+          <li>Early Lockdown (Mar-May 2020) period averaged ~540 complaints per day (-18.6%)</li>
+          <li>Reopening (Jun-Dec 2020) period surged to ~1,135 complaints per day (+71.2%)</li>
+          <li>The peak complaint surge occurred on June 20, 2020, with a 152.4% increase compared to 2019</li>
+          <li>Traditional weekend/weekday patterns disappeared during lockdown as work-from-home became widespread</li>
+          <li>The noise surge began precisely in the first week of June 2020, coinciding with Phase 1 reopening preparations</li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
 
-<style>
-  .explore-page {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 40px 20px;
-  }
-  
-  .explore-header {
-    margin-bottom: 40px;
-    text-align: center;
-  }
-  
-  /* Storyline connection box */
-  .storyline-connection {
-    display: flex;
-    align-items: center;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    padding: 20px;
-    margin: 30px auto;
-    max-width: 800px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    text-align: left;
-    border-left: 4px solid var(--primary-blue);
-  }
-  
-  .connection-icon {
-    font-size: 2rem;
-    color: var(--primary-blue);
-    margin-right: 20px;
-    flex-shrink: 0;
-  }
-  
-  .connection-text h3 {
-    margin-top: 0;
-    font-size: 1.2rem;
-    color: #333;
-  }
-  
-  .connection-text p {
-    margin-bottom: 0;
-    font-size: 0.95rem;
-    color: #666;
-  }
-  
-  /* Visualization captions */
-  .viz-caption {
-    padding: 8px 12px;
-    background: #f5f5f5;
-    border-top: 1px solid #eee;
-    font-size: 0.8rem;
-    color: #666;
-  }
-  
-  .viz-caption i {
-    color: var(--primary-blue);
-  }
-  
-  .explore-tabs {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 30px;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .tab-button {
-    padding: 12px 20px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 600;
-    color: #666;
-    transition: all 0.3s ease;
-    position: relative;
-  }
-  
-  .tab-button:after {
-    content: '';
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background-color: var(--primary-blue);
-    transform: scaleX(0);
-    transition: transform 0.3s ease;
-  }
-  
-  .tab-button.active {
-    color: var(--primary-blue);
-  }
-  
-  .tab-button.active:after {
-    transform: scaleX(1);
-  }
-  
-  .tab-content {
-    margin-bottom: 60px;
-  }
-  
-  .key-findings {
-    margin-top: 30px;
-    padding: 20px;
-    background-color: #f5f5f5;
-    border-left: 4px solid var(--primary-blue);
-    border-radius: 0 4px 4px 0;
-  }
-  
-  .key-findings h3 {
-    margin-top: 0;
-    color: #333;
-  }
-  
-  @media (max-width: 768px) {
-    .explore-tabs {
-      flex-wrap: wrap;
-    }
-    
-    .tab-button {
-      padding: 10px 15px;
-      font-size: 14px;
-    }
-    
-    .storyline-connection {
-      flex-direction: column;
-      text-align: center;
-    }
-    
-    .connection-icon {
-      margin-right: 0;
-      margin-bottom: 15px;
-    }
-  }
-</style>
-
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    // Tab switching functionality
-    const tabButtons = document.querySelectorAll('.tab-button');
-    const tabContents = document.querySelectorAll('.tab-content');
-    
-    tabButtons.forEach(button => {
-      button.addEventListener('click', function() {
-        // Update active tab button
-        tabButtons.forEach(btn => btn.classList.remove('active'));
-        this.classList.add('active');
-        
-        // Show corresponding tab content
-        const tabId = this.getAttribute('data-tab');
-        tabContents.forEach(content => {
-          content.style.display = 'none';
-        });
-        document.getElementById(`${tabId}-content`).style.display = 'block';
-        
-        // Update URL hash without scrolling
-        history.replaceState(null, null, `#${tabId}`);
+document.addEventListener('DOMContentLoaded', function() {
+  // Tab functionality
+  const tabButtons = document.querySelectorAll('.tab-button');
+  const tabContents = document.querySelectorAll('.tab-content');
+  
+  tabButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      // Remove active class from all buttons
+      tabButtons.forEach(btn => btn.classList.remove('active'));
+      // Add active class to clicked button
+      this.classList.add('active');
+      
+      // Hide all tab contents
+      tabContents.forEach(content => {
+        content.style.display = 'none';
       });
+      
+      // Show the selected tab content
+      const tabId = this.getAttribute('data-tab');
+      document.getElementById(tabId).style.display = 'block';
     });
-    
-    // Check URL hash on page load
-    if (location.hash) {
-      const tabId = location.hash.substring(1);
-      const tabButton = document.querySelector(`.tab-button[data-tab="${tabId}"]`);
-      if (tabButton) {
-        tabButton.click();
-      }
-    }
-    
-    // Add smooth entrance animation
-    const exploreHeader = document.querySelector('.explore-header');
-    if (exploreHeader) {
-      setTimeout(() => {
-        exploreHeader.style.opacity = '1';
-        exploreHeader.style.transform = 'translateY(0)';
-      }, 100);
-    }
   });
+});
 </script>

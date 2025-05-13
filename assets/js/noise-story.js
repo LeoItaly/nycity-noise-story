@@ -1,3 +1,8 @@
+/**
+ * NYC Noise Story Interactivity Scripts
+ * Enhances the visualization experience with tooltips, highlights, and responsive elements
+ */
+
 document.addEventListener("DOMContentLoaded", function () {
   // Initialize smooth scrolling for anchor links
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
@@ -135,33 +140,33 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (vizContainers && modal && modalContent && closeModal) {
     vizContainers.forEach((container) => {
-      // Skip containers with iframes
-      if (container.querySelector("iframe")) {
-        return;
+      // Check if the container has an iframe and not a PNG image
+      const iframe = container.querySelector("iframe");
+      const pngImage = container.querySelector('iframe[src*=".png"]');
+
+      // Only add expand functionality for iframes that are not PNG images
+      if (iframe && !pngImage) {
+        // Add expand functionality for visualizations
+        const expandButton = document.createElement("button");
+        expandButton.innerHTML = '<i class="fas fa-expand"></i>';
+        expandButton.className = "viz-expand-button";
+        expandButton.setAttribute("aria-label", "Expand visualization");
+        expandButton.onclick = function () {
+          openModal(iframe.cloneNode(true));
+        };
+        container.appendChild(expandButton);
       }
 
-      // Add a visible indicator that the visualization is clickable
-      container.classList.add("clickable");
-
-      const zoomIcon = document.createElement("div");
-      zoomIcon.className = "zoom-icon";
-      zoomIcon.innerHTML = '<i class="fas fa-search-plus"></i>';
-      container.appendChild(zoomIcon);
-
-      container.addEventListener("click", function () {
-        const vizContent = this.innerHTML;
-        modalContent.innerHTML =
-          vizContent + '<span class="close-modal">&times;</span>';
-        document.body.style.overflow = "hidden"; // Prevent scrolling
-        modal.classList.add("show");
-
-        document
-          .querySelector(".close-modal")
-          .addEventListener("click", function (e) {
-            e.stopPropagation();
-            closeModalHandler();
-          });
-      });
+      // Add hover effect to visualization captions
+      const caption = container.querySelector(".viz-caption");
+      if (caption) {
+        caption.addEventListener("mouseover", function () {
+          this.style.backgroundColor = "rgba(0, 57, 166, 0.9)";
+        });
+        caption.addEventListener("mouseout", function () {
+          this.style.backgroundColor = "";
+        });
+      }
     });
 
     // Close modal when clicking outside the content
@@ -264,4 +269,225 @@ document.addEventListener("DOMContentLoaded", function () {
     const scrolled = (window.scrollY / windowHeight) * 100;
     progressBar.style.width = scrolled + "%";
   });
+
+  // Create tooltip element that will be reused
+  const tooltip = document.createElement("div");
+  tooltip.className = "viz-tooltip";
+  document.body.appendChild(tooltip);
+
+  // Initialize interactive visualizations
+  initializeVisualizationEnhancements();
+  initializeModalLightbox();
+  initializeBoroughHighlighting();
+  initializeScrollEffects();
 });
+
+/**
+ * Enhances the visualization containers with interactivity
+ */
+function initializeVisualizationEnhancements() {
+  // Find all visualization containers
+  const vizContainers = document.querySelectorAll(".viz-container");
+
+  vizContainers.forEach((container) => {
+    // Check if the container has an iframe and not a PNG image
+    const iframe = container.querySelector("iframe");
+    const pngImage = container.querySelector('iframe[src*=".png"]');
+
+    // Only add expand functionality for iframes that are not PNG images
+    if (iframe && !pngImage) {
+      // Add expand functionality for visualizations
+      const expandButton = document.createElement("button");
+      expandButton.innerHTML = '<i class="fas fa-expand"></i>';
+      expandButton.className = "viz-expand-button";
+      expandButton.setAttribute("aria-label", "Expand visualization");
+      expandButton.onclick = function () {
+        openModal(iframe.cloneNode(true));
+      };
+      container.appendChild(expandButton);
+    }
+
+    // Add hover effect to visualization captions
+    const caption = container.querySelector(".viz-caption");
+    if (caption) {
+      caption.addEventListener("mouseover", function () {
+        this.style.backgroundColor = "rgba(0, 57, 166, 0.9)";
+      });
+      caption.addEventListener("mouseout", function () {
+        this.style.backgroundColor = "";
+      });
+    }
+  });
+
+  // Add interactive legends if they exist
+  initializeInteractiveLegends();
+}
+
+/**
+ * Sets up the modal lightbox for expanded visualizations
+ */
+function initializeModalLightbox() {
+  const modal = document.querySelector(".modal");
+  const modalContent = document.querySelector(".modal-content");
+  const closeButton = document.querySelector(".close-modal");
+
+  if (!modal || !modalContent || !closeButton) return;
+
+  closeButton.onclick = function () {
+    modal.style.display = "none";
+    modalContent.innerHTML = '<span class="close-modal">&times;</span>';
+  };
+
+  window.onclick = function (event) {
+    if (event.target === modal) {
+      modal.style.display = "none";
+      modalContent.innerHTML = '<span class="close-modal">&times;</span>';
+    }
+  };
+}
+
+/**
+ * Opens the modal with the provided content
+ */
+function openModal(content) {
+  const modal = document.querySelector(".modal");
+  const modalContent = document.querySelector(".modal-content");
+
+  if (!modal || !modalContent) return;
+
+  // Clear existing content except close button
+  const closeButton = modalContent.querySelector(".close-modal");
+  modalContent.innerHTML = "";
+  modalContent.appendChild(closeButton);
+
+  // Add the new content
+  modalContent.appendChild(content);
+
+  // Show modal
+  modal.style.display = "flex";
+}
+
+/**
+ * Makes borough tags and references interactive
+ */
+function initializeBoroughHighlighting() {
+  // Borough classes to highlight
+  const boroughs = [
+    "manhattan",
+    "brooklyn",
+    "queens",
+    "bronx",
+    "staten-island",
+  ];
+
+  // Add hover effects to borough tags
+  boroughs.forEach((borough) => {
+    const tags = document.querySelectorAll(`.location-tag.${borough}`);
+
+    tags.forEach((tag) => {
+      tag.addEventListener("mouseover", function () {
+        // Highlight all mentions of this borough in the text
+        const mentions = document.querySelectorAll(`.${borough}-mention`);
+        mentions.forEach((mention) => {
+          mention.classList.add(`${borough}-highlight`);
+        });
+      });
+
+      tag.addEventListener("mouseout", function () {
+        // Remove highlighting
+        const mentions = document.querySelectorAll(`.${borough}-mention`);
+        mentions.forEach((mention) => {
+          mention.classList.remove(`${borough}-highlight`);
+        });
+      });
+    });
+  });
+}
+
+/**
+ * Sets up interactive legends for visualizations
+ */
+function initializeInteractiveLegends() {
+  const legends = document.querySelectorAll(".viz-legend");
+
+  legends.forEach((legend) => {
+    const items = legend.querySelectorAll(".legend-item");
+    const vizContainer = legend.closest(".viz-container");
+    const iframe = vizContainer ? vizContainer.querySelector("iframe") : null;
+
+    items.forEach((item) => {
+      item.addEventListener("click", function () {
+        // Toggle active/inactive class
+        this.classList.toggle("inactive");
+
+        // If we have access to the iframe content, toggle visibility
+        if (iframe && iframe.contentDocument) {
+          const category = this.getAttribute("data-category");
+          const elements = iframe.contentDocument.querySelectorAll(
+            `.${category}`
+          );
+
+          elements.forEach((el) => {
+            el.style.opacity = this.classList.contains("inactive")
+              ? "0.2"
+              : "1";
+          });
+        }
+      });
+    });
+  });
+}
+
+/**
+ * Adds scroll-based reveal effects for content
+ */
+function initializeScrollEffects() {
+  // Find all elements with fade-in class
+  const fadeElements = document.querySelectorAll(".fade-in");
+
+  // Add observer for scroll animations
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          // Stop observing after it's visible
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.1,
+    }
+  );
+
+  // Observe each fade element
+  fadeElements.forEach((element) => {
+    observer.observe(element);
+  });
+}
+
+/**
+ * Helper function to show tooltip with data
+ */
+function showTooltip(event, content) {
+  const tooltip = document.querySelector(".viz-tooltip");
+
+  if (!tooltip) return;
+
+  tooltip.innerHTML = content;
+  tooltip.style.left = `${event.pageX + 15}px`;
+  tooltip.style.top = `${event.pageY + 15}px`;
+  tooltip.classList.add("active");
+}
+
+/**
+ * Helper function to hide tooltip
+ */
+function hideTooltip() {
+  const tooltip = document.querySelector(".viz-tooltip");
+
+  if (!tooltip) return;
+
+  tooltip.classList.remove("active");
+}

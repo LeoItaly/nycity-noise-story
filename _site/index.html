@@ -71,6 +71,58 @@
     margin-left: -15px;
   }
   
+  /* Larger Main Title for Landing */
+  .landing-title {
+    font-size: 3.5rem !important;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    color: white !important;
+    margin-top: 0;
+    padding-top: 30px;
+  }
+  
+  /* NYC Skyline Background */
+  .nyc-backdrop {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/nycity-noise-story/assets/images/nyc-skyline-real.jpg");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    padding: 0;
+    margin-bottom: 30px;
+    height: auto;
+    width: 100%;
+    position: relative;
+    text-align: center;
+  }
+  
+  /* Container for the title inside the backdrop */
+  .title-container {
+    width: 100%;
+    padding: 20px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 70%, rgba(0,0,0,0) 100%);
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  /* Image container to preserve aspect ratio */
+  .image-container {
+    width: 100%;
+    display: block;
+  }
+  
+  .image-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  /* Adjust text elements in the backdrop for readability */
+  .nyc-backdrop .slide-subtitle {
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+  }
+  
   /* NYC Borough Tags */
   .location-tag {
     display: inline-flex;
@@ -162,9 +214,18 @@
 
 <div class="slide-container">
   <!-- Landing Slide -->
-  <section id="landing" class="slide nyc-backdrop">
+  <section id="landing" class="slide">
+    <!-- Title with NYC skyline backdrop -->
+    <div class="nyc-backdrop">
+      <div class="image-container">
+        <img src="/nycity-noise-story/assets/images/nyc-skyline-real.jpg" alt="NYC Skyline" />
+      </div>
+      <div class="title-container">
+        <h1 class="slide-title landing-title fade-in">The Sounds of the City That Never Sleeps</h1>
+      </div>
+    </div>
+    
     <div class="slide-content">
-      <h1 class="slide-title fade-in">The Sounds of the City That Never Sleeps</h1>
       <h2 class="slide-subtitle fade-in">NYC's Pandemic Noise Story</h2>
       
       <div class="nyc-location-tags">

@@ -10,11 +10,10 @@
   --nyc-yellow: #FFDC73; /* Taxi yellow */
   --nyc-gray: #4D4D4D; /* Concrete/asphalt */
   
-  /* Visualization Style Variables */
-  --viz-border: rgba(0, 57, 166, 0.2); /* Light blue border */
-  --viz-background: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
-  --viz-hover: rgba(0, 57, 166, 0.05); /* Very light blue hover */
-  --viz-caption: rgba(77, 77, 77, 0.9); /* Dark gray for captions */
+  --viz-border: rgba(0, 57, 166, 0.2);
+  --viz-background: rgba(255, 255, 255, 0.8);
+  --viz-hover: rgba(0, 57, 166, 0.05);
+  --viz-caption: rgba(77, 77, 77, 0.9);
 }
 
 /* NYC-themed Header - Modern Style */

@@ -12,13 +12,11 @@ document.addEventListener("DOMContentLoaded", function () {
       const targetElement = document.querySelector(targetId);
 
       if (targetElement) {
-        // Add smoother scrolling with easing
         window.scrollTo({
-          top: targetElement.offsetTop - 60, // Add offset for header
+          top: targetElement.offsetTop - 60,
           behavior: "smooth",
         });
 
-        // Update active state in navigation
         document.querySelectorAll(".progress-nav a").forEach((navItem) => {
           navItem.classList.remove("active");
         });
@@ -30,7 +28,6 @@ document.addEventListener("DOMContentLoaded", function () {
           activeNavItem.classList.add("active");
         }
 
-        // Update URL hash without scrolling
         history.pushState(null, null, targetId);
       }
     });
@@ -38,8 +35,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Enhanced Intersection Observer for fade-in animations with sequence
   const fadeElements = document.querySelectorAll(".fade-in");
-
-  // Group fade elements by their parent slide
   const slideGroups = {};
   fadeElements.forEach((element) => {
     const parentSlide = element.closest(".slide");
@@ -59,14 +54,12 @@ document.addEventListener("DOMContentLoaded", function () {
           const element = entry.target;
           const parentSlideId = element.closest(".slide")?.id;
 
-          // Only apply the staggered animation if we haven't seen this slide before
           if (parentSlideId && slideGroups[parentSlideId]) {
             const elementsInSlide = slideGroups[parentSlideId];
             const index = elementsInSlide.indexOf(element);
 
-            // Apply staggered delay based on position in the parent slide
             if (index !== -1) {
-              const delay = index * 100; // 100ms stagger
+              const delay = index * 100;
               setTimeout(() => {
                 element.classList.add("visible");
               }, delay);
@@ -83,7 +76,7 @@ document.addEventListener("DOMContentLoaded", function () {
     },
     {
       threshold: 0.15,
-      rootMargin: "0px 0px -10% 0px", // Trigger a bit earlier
+      rootMargin: "0px 0px -10% 0px",
     }
   );
 
@@ -91,9 +84,8 @@ document.addEventListener("DOMContentLoaded", function () {
     fadeObserver.observe(element);
   });
 
-  // Improved Intersection Observer for progress navigation
+  // Progress navigation observer
   const slides = document.querySelectorAll(".slide");
-
   const slideObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -108,11 +100,8 @@ document.addEventListener("DOMContentLoaded", function () {
               item.classList.remove("active");
             });
             navItem.classList.add("active");
-
-            // Update URL hash without scrolling
             history.replaceState(null, null, `#${id}`);
 
-            // Also update timeline if applicable
             const timelinePoints = document.querySelectorAll(".timeline-point");
             timelinePoints.forEach((point) => {
               const pointTarget = point.getAttribute("data-target");
@@ -132,7 +121,7 @@ document.addEventListener("DOMContentLoaded", function () {
     slideObserver.observe(slide);
   });
 
-  // Enhanced Modal/Lightbox for enlarging visualizations
+  // Modal/Lightbox for visualizations
   const vizContainers = document.querySelectorAll(".viz-container");
   const modal = document.querySelector(".modal");
   const modalContent = document.querySelector(".modal-content");
@@ -140,13 +129,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (vizContainers && modal && modalContent && closeModal) {
     vizContainers.forEach((container) => {
-      // Check if the container has an iframe and not a PNG image
       const iframe = container.querySelector("iframe");
       const pngImage = container.querySelector('iframe[src*=".png"]');
 
-      // Only add expand functionality for iframes that are not PNG images
       if (iframe && !pngImage) {
-        // Add expand functionality for visualizations
         const expandButton = document.createElement("button");
         expandButton.innerHTML = '<i class="fas fa-expand"></i>';
         expandButton.className = "viz-expand-button";
@@ -157,7 +143,6 @@ document.addEventListener("DOMContentLoaded", function () {
         container.appendChild(expandButton);
       }
 
-      // Add hover effect to visualization captions
       const caption = container.querySelector(".viz-caption");
       if (caption) {
         caption.addEventListener("mouseover", function () {
@@ -169,14 +154,12 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
 
-    // Close modal when clicking outside the content
     modal.addEventListener("click", function (e) {
       if (e.target === modal) {
         closeModalHandler();
       }
     });
 
-    // Close modal with Escape key
     document.addEventListener("keydown", function (e) {
       if (e.key === "Escape" && modal.classList.contains("show")) {
         closeModalHandler();
@@ -186,14 +169,13 @@ document.addEventListener("DOMContentLoaded", function () {
     function closeModalHandler() {
       modal.classList.remove("show");
       setTimeout(() => {
-        document.body.style.overflow = ""; // Re-enable scrolling
-      }, 300); // Wait for animation
+        document.body.style.overflow = "";
+      }, 300);
     }
   }
 
-  // Enhanced Timeline navigation
+  // Timeline navigation
   const timelinePoints = document.querySelectorAll(".timeline-point");
-
   timelinePoints.forEach((point) => {
     point.addEventListener("click", function () {
       const targetPhase = this.getAttribute("data-target");

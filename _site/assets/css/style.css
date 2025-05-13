@@ -83,7 +83,7 @@ a:hover {
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url('/assets/images/helsinki-silhouette.png');
+    background-image: url('');
     background-size: cover;
     background-position: center;
     opacity: 0.1;
@@ -176,7 +176,7 @@ a:hover {
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url('/assets/images/helsinki-silhouette.png');
+    background-image: url('');
     background-size: cover;
     background-position: center;
     opacity: 0.15;

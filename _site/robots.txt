@@ -1,1 +1,1 @@
-Sitemap: http://localhost:4000/helsinki-cyclist-safety/sitemap.xml
+Sitemap: http://localhost:4000/nycity-noise-story/sitemap.xml

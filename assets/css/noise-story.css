@@ -1,0 +1,531 @@
+/* NYC Noise Story Specific Styles */
+
+:root {
+  --primary-blue: #3182bd;
+  --secondary-blue: #6baed6;
+  --light-blue: #c6dbef;
+  --primary-orange: #e6550d;
+  --secondary-orange: #fd8d3c;
+  --light-orange: #fdbe85;
+  --primary-green: #31a354;
+  --secondary-green: #74c476;
+  --light-green: #c7e9c0;
+  --lockdown-color: #e31a1c;
+  --reopening-color: #31a354;
+  --pre-pandemic-color: #3182bd;
+}
+
+/* Slideshow Container */
+.slide-container {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Individual Slides */
+.slide {
+  padding: 60px 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-bottom: 1px solid #eaeaea;
+  scroll-margin-top: 60px; /* For smooth scrolling with fixed header */
+}
+
+.slide-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Navigation Progress */
+.progress-nav {
+  position: fixed;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.progress-nav a {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: #ddd;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.progress-nav a:hover, .progress-nav a.active {
+  background-color: var(--primary-blue);
+  transform: scale(1.2);
+}
+
+.progress-nav a:hover::before, .progress-nav a.active::before {
+  content: attr(data-title);
+  position: absolute;
+  right: 25px;
+  top: -5px;
+  background: #333;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  white-space: nowrap;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  opacity: 0;
+  transform: translateX(10px);
+  animation: fadeInTooltip 0.3s forwards;
+}
+
+@keyframes fadeInTooltip {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Scroll Progress Bar */
+.scroll-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 4px;
+  background: linear-gradient(to right, var(--pre-pandemic-color), var(--lockdown-color), var(--reopening-color));
+  z-index: 1000;
+  transition: width 0.1s;
+}
+
+/* Visualization Containers */
+.viz-container {
+  width: 100%;
+  margin: 30px 0;
+  position: relative;
+  min-height: 400px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #eaeaea;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.viz-container.clickable {
+  cursor: pointer;
+}
+
+.viz-container.clickable:hover {
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transform: translateY(-2px);
+}
+
+.viz-container.large {
+  min-height: 600px;
+}
+
+.viz-container.full-width {
+  max-width: 100%;
+  margin-left: -20px;
+  margin-right: -20px;
+  border-radius: 0;
+}
+
+/* Zoom icon for clickable visualizations */
+.zoom-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.zoom-icon i {
+  color: #555;
+  font-size: 14px;
+}
+
+.viz-container.clickable:hover .zoom-icon {
+  opacity: 1;
+}
+
+/* Iframe styles for visualizations */
+.viz-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* For static image visualizations */
+.viz-container img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Old placeholder styles (kept for reference) */
+.viz-placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+  font-size: 1.1rem;
+  text-align: center;
+  padding: 20px;
+}
+
+.viz-placeholder i {
+  font-size: 3rem;
+  margin-bottom: 15px;
+  opacity: 0.6;
+}
+
+.viz-placeholder:hover {
+  background-color: rgba(49, 130, 189, 0.05);
+}
+
+/* Phase Indicators */
+.phase-indicator {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.phase-pre-pandemic {
+  background-color: var(--light-blue);
+  color: var(--primary-blue);
+}
+
+.phase-lockdown {
+  background-color: rgba(227, 26, 28, 0.15);
+  color: var(--lockdown-color);
+}
+
+.phase-reopening {
+  background-color: rgba(49, 163, 84, 0.15);
+  color: var(--reopening-color);
+}
+
+/* Other Elements */
+.slide-title {
+  font-size: 2.5rem;
+  margin: 0 0 15px 0;
+  color: #333;
+  line-height: 1.2;
+}
+
+.slide-subtitle {
+  font-size: 1.6rem;
+  margin: 0 0 25px 0;
+  color: #555;
+  font-weight: normal;
+}
+
+.key-finding {
+  background-color: #f5f5f5;
+  border-left: 4px solid var(--primary-blue);
+  padding: 15px 20px;
+  margin: 25px 0;
+  border-radius: 0 4px 4px 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.key-finding:hover {
+  transform: translateX(3px);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.key-finding h3 {
+  margin-top: 0;
+  font-size: 1.3rem;
+  color: #333;
+}
+
+.key-finding p {
+  margin-bottom: 0;
+}
+
+/* Interactive Elements */
+.interactive-note {
+  font-size: 0.9rem;
+  color: #666;
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  padding: 8px 12px;
+  background-color: rgba(253, 245, 230, 0.7);
+  border-radius: 20px;
+  width: fit-content;
+  transition: background-color 0.3s ease;
+}
+
+.interactive-note:hover {
+  background-color: rgba(253, 245, 230, 1);
+}
+
+.interactive-note i {
+  margin-right: 5px;
+  color: var(--primary-orange);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+/* For modal/lightbox for enlarging visualizations */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.8);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.modal.show {
+  display: block;
+  opacity: 1;
+}
+
+.modal-content {
+  position: relative;
+  margin: 5% auto;
+  padding: 20px;
+  width: 90%;
+  max-width: 1200px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  transform: scale(0.95);
+  transition: transform 0.3s ease;
+}
+
+.modal.show .modal-content {
+  transform: scale(1);
+}
+
+.close-modal {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #555;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.close-modal:hover {
+  background-color: #f0f0f0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .slide {
+    padding: 40px 15px;
+  }
+
+  .progress-nav {
+    display: none;
+  }
+
+  .slide-title {
+    font-size: 2rem;
+  }
+
+  .slide-subtitle {
+    font-size: 1.3rem;
+  }
+
+  .modal-content {
+    width: 95%;
+    margin: 10% auto;
+  }
+  
+  .scroll-progress-bar {
+    height: 3px;
+  }
+}
+
+/* Animation for elements */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Call to action button */
+.cta-button {
+  display: inline-block;
+  background-color: var(--primary-blue);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 600;
+  margin-top: 20px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-button:hover {
+  background-color: var(--secondary-blue);
+  text-decoration: none;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.cta-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.cta-button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(1, 1) translate(-50%, -50%);
+  transform-origin: 50% 50%;
+}
+
+.cta-button:hover::after {
+  animation: ripple 1s ease-out;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0, 0) translate(-50%, -50%);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(20, 20) translate(-50%, -50%);
+    opacity: 0;
+  }
+}
+
+/* Timeline navigator */
+.timeline-nav {
+  display: flex;
+  justify-content: space-between;
+  margin: 30px 0;
+  padding: 0;
+  position: relative;
+}
+
+.timeline-nav::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: #ddd;
+  z-index: -1;
+}
+
+.timeline-point {
+  flex: 1;
+  text-align: center;
+  position: relative;
+  padding-top: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.timeline-point::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: #ddd;
+  z-index: 1;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 0 0 rgba(0,0,0,0);
+}
+
+.timeline-point:hover::before {
+  box-shadow: 0 0 0 5px rgba(49, 130, 189, 0.1);
+}
+
+.timeline-point.active::before {
+  background-color: var(--primary-blue);
+  width: 20px;
+  height: 20px;
+}
+
+.timeline-point-pre-pandemic.active::before {
+  background-color: var(--pre-pandemic-color);
+}
+
+.timeline-point-lockdown.active::before {
+  background-color: var(--lockdown-color);
+}
+
+.timeline-point-reopening.active::before {
+  background-color: var(--reopening-color);
+}
+
+.timeline-label {
+  font-size: 0.9rem;
+  color: #666;
+  font-weight: 500;
+  transition: all 0.3s ease;
+} 
+
+.timeline-point:hover .timeline-label {
+  color: #333;
+} 

@@ -1,11 +1,11 @@
-title: My Website
-description: A placeholder website ready for new content
-baseurl: "/helsinki-cyclist-safety"
+title: "The Quiet Before the Storm: NYC's Pandemic Noise Story"
+description: "Exploring how COVID-19 transformed New York City's soundscape through noise complaint data"
+baseurl: "/nycity-noise-story"
 url: "https://LeoItaly.github.io"
 
 # Author information
 author:
-  name: Site Owner
+  name: LeoItaly
   email: example@example.com
   github: LeoItaly
   twitter:
@@ -29,8 +29,8 @@ sass:
     - node_modules
   sourcemap: never
 
-# Theme customization
-accent_color: "#4285F4"
+# Theme customization - using blues, oranges, and greens as mentioned
+accent_color: "#3182bd" # Blue from visualizations
 theme_color: "#333333"
 theme_font: "Nunito Sans"
 
@@ -40,9 +40,9 @@ twitter:
   card: summary_large_image
 logo: /assets/images/site-icon.png
 social:
-  name: My Website
+  name: "The Quiet Before the Storm: NYC's Pandemic Noise Story"
   links:
-    - https://github.com/LeoItaly/helsinki-cyclist-safety
+    - https://github.com/LeoItaly/nycity-noise-story
 
 # Collections
 collections:
@@ -66,7 +66,7 @@ defaults:
       path: "_posts"
     values:
       layout: "post"
-      author: "Site Admin"
+      author: "LeoItaly"
   - scope:
       path: "_publications"
     values:

@@ -1,0 +1,82 @@
+title: My Website
+description: A placeholder website ready for new content
+baseurl: "/helsinki-cyclist-safety"
+url: "https://LeoItaly.github.io"
+
+# Author information
+author:
+  name: Site Owner
+  email: example@example.com
+  github: LeoItaly
+  twitter:
+  linkedin:
+
+# Build settings
+markdown: kramdown
+# Commenting out theme to use custom Sass files
+# theme: jekyll-theme-cayman
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Sass processing
+sass:
+  style: compressed
+  sass_dir: _sass
+  load_paths:
+    - _sass
+    - node_modules
+  sourcemap: never
+
+# Theme customization
+accent_color: "#4285F4"
+theme_color: "#333333"
+theme_font: "Nunito Sans"
+
+# SEO settings
+twitter:
+  username:
+  card: summary_large_image
+logo: /assets/images/site-icon.png
+social:
+  name: My Website
+  links:
+    - https://github.com/LeoItaly/helsinki-cyclist-safety
+
+# Collections
+collections:
+  data:
+    output: true
+  posts:
+    output: true
+    permalink: /:year/:month/:day/:title/
+  publications:
+    output: true
+    permalink: /publications/:path/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+      image: /assets/images/default-banner.jpg
+  - scope:
+      path: "_posts"
+    values:
+      layout: "post"
+      author: "Site Admin"
+  - scope:
+      path: "_publications"
+    values:
+      layout: "publication"
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .gitignore
+  - README.md

@@ -1,0 +1,162 @@
+---
+layout: default
+---
+
+<article class="publication">
+    <header class="publication-header">
+        <h1 class="publication-title">{{ page.title }}</h1>
+        
+        <div class="publication-meta">
+            <div class="authors">
+                {% for author in page.authors %}
+                <span class="author">{{ author }}</span>{% unless forloop.last %}, {% endunless %}
+                {% endfor %}
+            </div>
+            
+            {% if page.publication_date %}
+            <div class="pub-date">
+                Published: {{ page.publication_date | date: "%B %Y" }}
+            </div>
+            {% endif %}
+            
+            {% if page.journal %}
+            <div class="journal">
+                {{ page.journal }}{% if page.volume %}, {{ page.volume }}{% endif %}{% if page.issue %}({{ page.issue }}){% endif %}{% if page.pages %}: {{ page.pages }}{% endif %}
+            </div>
+            {% endif %}
+            
+            {% if page.doi %}
+            <div class="doi">
+                DOI: <a href="https://doi.org/{{ page.doi }}" target="_blank" rel="noopener">{{ page.doi }}</a>
+            </div>
+            {% endif %}
+        </div>
+    </header>
+
+    <div class="publication-abstract">
+        <h2>Abstract</h2>
+        {{ page.abstract | markdownify }}
+    </div>
+
+    <div class="publication-buttons">
+        {% if page.pdf %}
+        <a href="{{ page.pdf | relative_url }}" class="button pdf-button" target="_blank" rel="noopener">
+            <i class="fas fa-file-pdf"></i> PDF
+        </a>
+        {% endif %}
+        
+        {% if page.code %}
+        <a href="{{ page.code }}" class="button code-button" target="_blank" rel="noopener">
+            <i class="fas fa-code"></i> Code
+        </a>
+        {% endif %}
+        
+        {% if page.dataset %}
+        <a href="{{ page.dataset }}" class="button data-button" target="_blank" rel="noopener">
+            <i class="fas fa-database"></i> Dataset
+        </a>
+        {% endif %}
+        
+        {% if page.slides %}
+        <a href="{{ page.slides | relative_url }}" class="button slides-button" target="_blank" rel="noopener">
+            <i class="fas fa-presentation"></i> Slides
+        </a>
+        {% endif %}
+    </div>
+
+    {% if page.citation %}
+    <div class="publication-citation">
+        <h2>Citation</h2>
+        <div class="citation-box">
+            {{ page.citation | markdownify }}
+        </div>
+    </div>
+    {% endif %}
+
+    <div class="publication-content">
+        {{ content }}
+    </div>
+</article>
+
+<style>
+    .publication {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem;
+        background-color: white;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+    }
+    
+    .publication-title {
+        margin-bottom: 1rem;
+    }
+    
+    .publication-meta {
+        color: var(--medium-gray);
+        margin-bottom: 2rem;
+        line-height: 1.6;
+    }
+    
+    .publication-meta .authors {
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+    
+    .publication-abstract {
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--light-gray);
+    }
+    
+    .publication-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+    
+    .button {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 1rem;
+        border-radius: var(--border-radius);
+        font-weight: 600;
+        transition: background-color var(--transition-speed), color var(--transition-speed);
+    }
+    
+    .pdf-button {
+        background-color: #dc3545;
+        color: white;
+    }
+    
+    .code-button {
+        background-color: #6f42c1;
+        color: white;
+    }
+    
+    .data-button {
+        background-color: #20c997;
+        color: white;
+    }
+    
+    .slides-button {
+        background-color: #fd7e14;
+        color: white;
+    }
+    
+    .button:hover {
+        opacity: 0.9;
+        color: white;
+    }
+    
+    .citation-box {
+        background-color: var(--light-gray);
+        padding: 1rem;
+        border-radius: var(--border-radius);
+        font-family: monospace;
+        white-space: pre-wrap;
+        overflow-x: auto;
+    }
+</style> 

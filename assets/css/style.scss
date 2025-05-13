@@ -1,0 +1,17 @@
+// Import modern Sass color module
+@use 'sass:color';
+
+// Import variables and theme with modern syntax
+@use 'jekyll-theme-cayman';
+
+// Custom styles for our site
+// Add custom styles here
+
+// Fix for selection with color module
+::selection {
+  background: color.invert(#1e6bb8);
+}
+
+::-moz-selection {
+  background: color.invert(#1e6bb8);
+} 
